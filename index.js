@@ -1,20 +1,11 @@
 const PORT = process.env.PORT || 3000;
-let FE_DOMAIN;
-try {
-    FE_DOMAIN = JSON.parse(process.env.FE_DOMAIN);
-} catch(err) {
-    FE_DOMAIN = process.env.FE_DOMAIN || '*';
-}
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({
-    origin: [FE_DOMAIN, 'localhost:3000'],
-}));
+app.use(cors());
 
 const mutProfiles = {
     ['Alsyi']: {
