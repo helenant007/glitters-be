@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const mutProfiles = {
-    ['Alsyi']: {
+    ['alsyi']: {
         name: 'Alsyi Sabarini',
         dob: '1996-11-13',
         profilePic:'https://media-exp1.licdn.com/dms/image/C5603AQEbkEQ0jcMkOg/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=-nh8RHkMmGDbBKfPXCThAAx9t38I7yTWuda87xC-qKg',
@@ -22,8 +22,8 @@ const mutProfiles = {
                 jobDescription: 'Making hiring easier',
             },
             {
-                startDate: '2020-06-21',
-                endDate: null,
+                startDate: '2015-06-01',
+                endDate: '2018-06-01',
                 jobTitle: 'Student',
                 company: 'University of Indonesia',
                 companyLogo: 'https://images.glints.com/unsafe/1200x0/glints-dashboard.s3.amazonaws.com/company-logo/805d861f71c172ce260a247028cb0718.png',
@@ -31,10 +31,10 @@ const mutProfiles = {
             },
         ]
     },
-    ['Helen']: {
+    ['helen']: {
         name: 'Helen',
         dob: '1995-12-07',
-        profilePic: '',
+        profilePic: 'https://media-exp1.licdn.com/dms/image/C5603AQEUCuGwHRuBZw/profile-displayphoto-shrink_200_200/0?e=1597881600&v=beta&t=OGdN3HcUxAM-ripusQd-9uA-MCG4el67weV5ZS0tAlA',
         workExperiences: [
             {
                 startDate: '2020-06-21',
@@ -50,7 +50,7 @@ const mutProfiles = {
                 jobTitle: 'Software Engineer',
                 company: 'E-commerce based in Jakarta',
                 companyLogo: 'https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/06/shopping-online.jpg',
-                jobDescription: 'Bringing easier life for Seller and Tokopedia users',
+                jobDescription: 'Bringing easier life for Seller of my E-commerce Users',
             },
         ],
     }
@@ -71,7 +71,7 @@ app.get('/profile/:profileId', (req, res) => {
 });
 
 app.post('/profile', (req,res) => {
-    const profileId = `${req.body.name.split(' ').join('-')}-${new Date().getTime()}`;
+    const profileId = `${req.body.name.toLowerCase().split(' ').join('-')}-${new Date().getTime()}`;
     mutProfiles[profileId] = req.body;
     res.json({
         status: 'OK',
